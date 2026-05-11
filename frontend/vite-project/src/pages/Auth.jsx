@@ -22,7 +22,7 @@ function Auth() {
       const User = response.user
       const name = User.displayName
       const email = User.email
-      const result = await axios.post(serverUrl + "/api/auth/google", { name, email }
+      const result = await axios.post(serverUrl + "/api/auth/google", { name, email },
       {withCredentials: true})
      
       
