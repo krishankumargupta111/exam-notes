@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import { serverUrl } from '../App'
 import { setUserData } from '../redux/userSlice'
-import api from "../api"
+import api from "../services/api.js"
 
 function Footer() {
   const dispatch=useDispatch()
