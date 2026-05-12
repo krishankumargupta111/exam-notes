@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { GiHamburgerMenu } from "react-icons/gi";
 import FinalResult from '../components/FinalResult';
-import api from "../api"
+import api from "../services/api.js"
 
 function History() {
   const { userData } = useSelector((state) => state.user);
