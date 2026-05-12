@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'motion/react'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { serverUrl } from '../App'
+import { serverUrl } from '../config.js'
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { GiHamburgerMenu } from "react-icons/gi";
