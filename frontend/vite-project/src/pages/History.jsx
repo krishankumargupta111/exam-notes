@@ -21,7 +21,7 @@ function History() {
   useEffect(() => {
     const myNotes = async () => {
       try {
-        const res = await api.get(serverUrl + "/api/notes/getnotes")
+        const res = await api.get("/api/notes/getnotes")
         console.log(res.data)
 
 
@@ -40,7 +40,7 @@ function History() {
     setLoading(true)
     setActiveNoteId(noteId)
     try {
-      const res = await api.get(serverUrl + `/api/notes/${noteId}`)
+      const res = await api.get(`/api/notes/${noteId}`)
       setSelectedNote(res.data.content)
       setLoading(false)
     } catch (error) {
