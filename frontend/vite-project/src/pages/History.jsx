@@ -20,7 +20,7 @@ function History() {
   useEffect(() => {
     const myNotes = async () => {
       try {
-        const res = await axios.get(serverUrl + "/api/notes/getnotes", { withCredentials: true })
+        const res = await api.get(serverUrl + "/api/notes/getnotes")
         console.log(res.data)
 
 
