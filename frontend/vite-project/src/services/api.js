@@ -17,7 +17,7 @@ export default api
 export const getCurrentUser = async (dispatch) => {
    
   try {
-    const result = await api.get(serverUrl + "/api/user/currentuser");
+    const result = await api.get("/api/user/currentuser");
 
     dispatch(setUserData(result.data));
   } catch (error) {
