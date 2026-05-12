@@ -39,7 +39,7 @@ function History() {
     setLoading(true)
     setActiveNoteId(noteId)
     try {
-      const res = await axios.get(serverUrl + `/api/notes/${noteId}`, { withCredentials: true })
+      const res = await api.get(serverUrl + `/api/notes/${noteId}`)
       setSelectedNote(res.data.content)
       setLoading(false)
     } catch (error) {
