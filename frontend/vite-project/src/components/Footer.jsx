@@ -12,7 +12,7 @@ function Footer() {
   const dispatch=useDispatch()
     const handlSignOut=async()=>{
       try{
-        await api.get(serverUrl+"/api/auth/logout")
+        await api.get("/api/auth/logout")
          dispatch(setUserData(null))
          navigate("/auth")
          
