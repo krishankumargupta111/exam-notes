@@ -16,7 +16,7 @@ function Pricing() {
     try {
       setPayingAmount(amount)
       setPaying(true)
-      const result = await api.post(serverUrl + "/api/credit/order",
+      const result = await api.post("/api/credit/order",
         { amount })
 
       if (result.data.url) {
