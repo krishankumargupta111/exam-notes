@@ -4,7 +4,7 @@ import logo from "../assets/logo.png"
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
-import { serverUrl } from '../App'
+import { serverUrl } from '../config.js'
 import { setUserData } from '../redux/userSlice'
 import api from "../services/api.js"
 
