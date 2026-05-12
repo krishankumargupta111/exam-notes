@@ -4,7 +4,7 @@ import { motion } from 'motion/react'
 import { useState } from 'react'
 import axios from 'axios'
 import { serverUrl } from '../App'
-import api from "../api"
+import api from "../services/api.js"
 
 function Pricing() {
   const navigate = useNavigate()
