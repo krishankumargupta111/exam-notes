@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { useState } from 'react'
 import axios from 'axios'
-import { serverUrl } from '../App'
+import { serverUrl } from '../config.js'
 import api from "../services/api.js"
 
 function Pricing() {
