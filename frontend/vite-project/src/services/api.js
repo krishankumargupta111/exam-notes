@@ -3,7 +3,15 @@ import axios from "axios";
 import { setUserData } from "../redux/userSlice";
 import { recordStats } from "motion/react";
 
-
+const api=axios.create({
+   baseURL:serverUrl})
+api.interceptors.request.use((config)=>{
+   const token=localStorage.getItem("token")
+   if(token){
+      config.headers.Authorization=`Bearer${token}`
+   }
+   return config})
+export default api
 
 export const getCurrentUser = async (dispatch) => {
    
