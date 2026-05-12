@@ -28,8 +28,7 @@ export const getCurrentUser = async (dispatch) => {
 export const generateNotes = async (payload) => {
    
   try {
-    const result = await api.post(
-      serverUrl + "/api/notes/generatenotes",
+    const result = await api.post("/api/notes/generatenotes",
       payload);
 
     console.log(result.data);
@@ -41,8 +40,7 @@ export const generateNotes = async (payload) => {
 
 export const downloadPdf = async (result) => {
   try {
-    const response = await api.post(
-      serverUrl + "/api/pdf/generate.pdf",
+    const response = await api.post("/api/pdf/generate.pdf",
       { result },
       { responseType: "blob"}
     );
