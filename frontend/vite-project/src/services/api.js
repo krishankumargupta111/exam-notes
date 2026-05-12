@@ -2,7 +2,7 @@ import { serverUrl } from "../App";
 import axios from "axios";
 import { setUserData } from "../redux/userSlice";
 import { recordStats } from "motion/react";
-import api from "./api"
+
 
 const api=axios.create({
    baseURL:serverUrl})
