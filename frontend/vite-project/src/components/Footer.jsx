@@ -6,12 +6,13 @@ import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import { serverUrl } from '../App'
 import { setUserData } from '../redux/userSlice'
+import api from "../api"
 
 function Footer() {
   const dispatch=useDispatch()
     const handlSignOut=async()=>{
       try{
-        await axios.get(serverUrl+"/api/auth/logout",{withCredentials:true})
+        await api.get(serverUrl+"/api/auth/logout")
          dispatch(setUserData(null))
          navigate("/auth")
          
