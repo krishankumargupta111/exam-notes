@@ -7,7 +7,7 @@ import axios from 'axios'
 import { serverUrl } from '../App'
 import { setUserData } from '../redux/userSlice'
 import { useNavigate } from 'react-router-dom'
-import api from "../api"
+import api from "../services/api.js"
 
 
 
