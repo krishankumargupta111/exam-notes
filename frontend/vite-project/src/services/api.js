@@ -1,4 +1,4 @@
-import { serverUrl } from "../App";
+import { serverUrl } from "../config.js";
 import axios from "axios";
 import { setUserData } from "../redux/userSlice";
 import { recordStats } from "motion/react";
