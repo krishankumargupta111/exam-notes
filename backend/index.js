@@ -11,6 +11,7 @@ import creditRouter from "./routes/credits.route.js";
 import { stripeWebHook } from "./controllers/credits.controller.js";
 dotenv.config();
 const app = express();
+connectDb();
 
 app.post(
   "/api/credits/webhook",
@@ -36,5 +37,5 @@ app.use("/api/pdf", pdfRouter);
 app.use("/api/credit", creditRouter);
 app.listen(PORT, () => {
   console.log(`server running on ${PORT}`);
-  connectDb();
+  
 });
