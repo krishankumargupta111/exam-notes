@@ -41,7 +41,7 @@ export const generateNotes = async (payload) => {
 
 export const downloadPdf = async (result) => {
   try {
-    const response = await axios.post(
+    const response = await api.post(
       serverUrl + "/api/pdf/generate.pdf",
       { result },
       { responseType: "blob"}
