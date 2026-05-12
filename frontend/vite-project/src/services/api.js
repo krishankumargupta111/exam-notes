@@ -2,6 +2,7 @@ import { serverUrl } from "../App";
 import axios from "axios";
 import { setUserData } from "../redux/userSlice";
 import { recordStats } from "motion/react";
+import api from "./api"
 
 const api=axios.create({
    baseURL:serverUrl})
@@ -16,9 +17,7 @@ export default api
 export const getCurrentUser = async (dispatch) => {
    
   try {
-    const result = await axios.get(serverUrl + "/api/user/currentuser", {
-      withCredentials: true,
-    });
+    const result = await api.get(serverUrl + "/api/user/currentuser");
 
     dispatch(setUserData(result.data));
   } catch (error) {
@@ -29,11 +28,9 @@ export const getCurrentUser = async (dispatch) => {
 export const generateNotes = async (payload) => {
    
   try {
-    const result = await axios.post(
+    const result = await api.post(
       serverUrl + "/api/notes/generatenotes",
-      payload,
-      { withCredentials: true },
-    );
+      payload);
 
     console.log(result.data);
     return result.data;
@@ -47,7 +44,7 @@ export const downloadPdf = async (result) => {
     const response = await axios.post(
       serverUrl + "/api/pdf/generate.pdf",
       { result },
-      { responseType: "blob", withCredentials: true },
+      { responseType: "blob"}
     );
 
     console.log(response);
