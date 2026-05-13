@@ -23,7 +23,9 @@ export const googleAuth = async (req, res) => {
 
 export const logOut = async (req, res) => {
   try {
-    localStorage.removeItem("token");
+      localStorage.removeItem("token");
+
+   dispatch(setUserData(null));
 
     return res.status(200).json({ messsage: "Logout successfully" });
   } catch (error) {
