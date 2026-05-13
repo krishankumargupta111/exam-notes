@@ -11,14 +11,14 @@ import creditRouter from "./routes/credits.route.js";
 import { stripeWebHook } from "./controllers/credits.controller.js";
 dotenv.config();
 
-
+const app = express();
 
 app.post(
   "/api/credits/webhook",
   express.raw({ type: "application/json" }),
   stripeWebHook,
 );
-const app = express();
+
 app.use(
   cors({
     origin:"https://exam-notesfrontend.onrender.com",
