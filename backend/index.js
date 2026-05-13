@@ -18,6 +18,7 @@ app.post(
   express.raw({ type: "application/json" }),
   stripeWebHook,
 );
+app.use(express.json());
 
 app.use(
   cors({
@@ -27,7 +28,7 @@ app.use(
   }),
 );
 
-app.use(express.json());
+
 app.use(cookieParser());
 const PORT = process.env.PORT || 5000;
 
