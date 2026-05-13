@@ -7,8 +7,9 @@ import { recordStats } from "motion/react";
 const api=axios.create({
    baseURL:serverUrl})
 api.interceptors.request.use((config)=>{
+    console.log("INTERCEPTOR RUNNING");
    const token=localStorage.getItem("token")
-   console.log(token)
+    console.log("TOKEN:", token);
    if(token){
       config.headers.Authorization=`Bearer ${token}`
    }
