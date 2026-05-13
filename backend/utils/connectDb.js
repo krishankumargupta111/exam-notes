@@ -8,7 +8,7 @@ const connectDb=async()=>{
         console.log("connect to database")
 
     }catch(error){
-
+   console.log("DATABASE ERROR:", error);
     }
 }
 export default connectDb
