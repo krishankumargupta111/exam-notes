@@ -35,8 +35,9 @@ app.use("/api/user", userRouter);
 app.use("/api/notes", notesRouter);
 app.use("/api/pdf", pdfRouter);
 app.use("/api/credit", creditRouter);
+connectDb();
 app.listen(PORT, () => {
   console.log(`server running on ${PORT}`);
-  connectDb();
+  
   
 });
