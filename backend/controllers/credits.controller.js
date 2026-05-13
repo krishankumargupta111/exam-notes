@@ -43,6 +43,7 @@ export const createCreditsOrder = async (req, res) => {
   }
 };
 export const stripeWebHook = async (req, res) => {
+   console.log("WEBHOOK HIT");
   const sig = req.headers["stripe-signature"];
   let event;
 
@@ -52,6 +53,7 @@ export const stripeWebHook = async (req, res) => {
       sig,
       process.env.STRIPE_WIBHOOK_SECRET,
     );
+     console.log(event.type);
   } catch (error) {
     console.log("❌ Webhook signature error:", error.message);
     return res.json(400).send("Webhook error");
