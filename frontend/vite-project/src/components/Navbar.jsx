@@ -24,6 +24,9 @@ function Navbar() {
   const handlSignOut = async () => {
     try {
       await api.get("/api/auth/logout")
+       localStorage.removeItem("token");
+
+ 
       dispatch(setUserData(null))
       navigate("/auth")
 
