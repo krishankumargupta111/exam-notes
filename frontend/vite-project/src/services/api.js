@@ -3,8 +3,6 @@ import axios from "axios";
 import { setUserData } from "../redux/userSlice";
 import { recordStats } from "motion/react";
 
-
-
 export const getCurrentUser = async (dispatch) => {
    
   try {
@@ -33,7 +31,6 @@ export const generateNotes = async (payload) => {
     console.log(error);
   }
 };
-
 export const downloadPdf = async (result) => {
   try {
     const response = await axios.post(
@@ -54,5 +51,22 @@ export const downloadPdf = async (result) => {
     window.URL.revokeObjectURL(url);
   } catch (error) {
     throw new Error("PDF download failed");
+  }
+};
+
+
+export const regenerateNotes = async (noteId) => {
+  try {
+    const result = await axios.post(
+      serverUrl + `/api/notes/regenerate/${noteId}`,
+      {},
+      { withCredentials: true }
+    );
+
+    console.log(result.data);
+    return result.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
   }
 };

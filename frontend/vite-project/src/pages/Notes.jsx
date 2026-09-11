@@ -129,7 +129,7 @@ function Notes() {
       rounded-2xl
       bg-white
       shadow-[0_15px_40px_rgba(0,0,0,0.15)] p-6">
-          <FinalResult result={result} />
+          <FinalResult result={result}  setResult={setResult} />
         </div>
       </motion.div>}
     </div>

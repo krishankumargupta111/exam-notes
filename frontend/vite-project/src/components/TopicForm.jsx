@@ -34,7 +34,11 @@ function TopicForm({ setResult, setLoading, loading, setError }) {
         includeChart,
       });
       
-      setResult(result.data);
+  setResult({
+  ...result.data,
+  noteId: result.noteId,
+  regenerationCount: 0,
+});
       setLoading(false);
       setClassLevel("")
       setTopic("")

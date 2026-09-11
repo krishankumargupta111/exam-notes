@@ -1,4 +1,4 @@
-export const buildPrompt = ({
+export  const buildPrompt = ({
   topic,
   classLevel,
   examType,

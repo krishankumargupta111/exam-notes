@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import Mermaid from './Mermaid'
 import RechartSetup from './RechartSetup'
-import { downloadPdf } from '../services/api'
+import { downloadPdf, regenerateNotes } from '../services/api'
 const markDownComponent = {
   h1: ({ children }) => (
     <h1 className='text-2xl font-bold text-indigo-700 mt-6
@@ -31,9 +31,32 @@ const markDownComponent = {
   ),
 }
 
-function FinalResult({ result }) {
+function FinalResult({ result, setResult }) {
   const [quickRevision, setQuickRevision] = useState(false)
+    const [regenerating, setRegenerating] = useState(false)
 
+
+    const handleRegenerate = async () => {
+  if (result.regenerationCount >= 1) {
+    return
+  }
+
+  try {
+    setRegenerating(true)
+
+    const response = await regenerateNotes(result.noteId)
+
+    setResult({
+      ...response.data,
+      noteId: response.noteId,
+      regenerationCount: response.regenerationCount,
+    })
+  } catch (error) {
+    console.log(error)
+  } finally {
+    setRegenerating(false)
+  }
+}
   if (!result ||
     !result.subTopics ||
     !result.questions ||
@@ -60,6 +83,23 @@ function FinalResult({ result }) {
               : "bg-green-100 text-green-700 hover:bg-green-200"}`}>
             {quickRevision ? "Exit Revision Mode" : "Quick Revision (5  min)"}
           </button>
+
+          <button
+  onClick={handleRegenerate}
+  disabled={regenerating || result.regenerationCount >= 1}
+  className={`px-4 py-2 rounded-lg text-sm font-medium transition
+    ${
+      regenerating || result.regenerationCount >= 1
+        ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+        : "bg-purple-600 text-white hover:bg-purple-700"
+    }`}
+>
+  {regenerating
+    ? "Regenerating..."
+    : result.regenerationCount >= 1
+      ? "Regeneration Used"
+      : "🔄 Regenerate (Free)"}
+</button>
           <button
           onClick={()=>downloadPdf(result)} className='px-4 py-2 rounded-lg text-sm font-medium
   bg-indigo-600 text-white hover:bg-indigo-700'>

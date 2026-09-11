@@ -1,4 +1,6 @@
+
 import mongoose from "mongoose";
+
 const notesSchema = new mongoose.Schema(
   {
     user: {
@@ -6,10 +8,12 @@ const notesSchema = new mongoose.Schema(
       ref: "UserModel",
       required: true,
     },
+
     topic: {
       type: String,
       required: true,
     },
+
     classLevel: String,
     examType: String,
 
@@ -17,15 +21,46 @@ const notesSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+
     includeDiagram: Boolean,
     includeChart: Boolean,
+
+  
     content: {
       type: mongoose.Schema.Types.Mixed,
       required: true,
     },
+
+    regenerationCount: {
+      type: Number,
+      default: 0,
+      min: 0,
+    },
+
+
+    versions: [
+      {
+        version: {
+          type: Number,
+          required: true,
+        },
+
+        content: {
+          type: mongoose.Schema.Types.Mixed,
+          required: true,
+        },
+
+        createdAt: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
   },
   { timestamps: true },
 );
 
 const Notes = mongoose.model("Notes", notesSchema);
+
 export default Notes;
+
