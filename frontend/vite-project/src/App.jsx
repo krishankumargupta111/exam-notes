@@ -9,7 +9,7 @@ import { getCurrentUser } from './services/api'
 import { useDispatch, useSelector } from 'react-redux'
 import PaymentSuccess from './pages/PaymentSuccess'
 import PaymentFailed from './pages/PaymentFailed'
-export const serverUrl="http://localhost:8000"
+export const serverUrl=import.meta.env.VITE_API_URL
 
 function App() {
   const dispatch=useDispatch()
