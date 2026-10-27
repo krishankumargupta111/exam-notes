@@ -22,7 +22,7 @@ pipeline {
                     docker build \
                       -t "$FRONTEND_IMAGE:$BUILD_NUMBER" \
                       -t "$FRONTEND_IMAGE:latest" \
-                      ./frontend
+                      ./frontend/vite-project
                 '''
             }
         }
