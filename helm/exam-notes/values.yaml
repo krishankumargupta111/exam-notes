@@ -1,0 +1,21 @@
+frontend:
+  replicaCount: 1
+  image:
+    repository: krishankumargupta/exam-notes-frontend
+    tag: latest
+    pullPolicy: Always
+  service:
+    type: ClusterIP
+    port: 5173
+    targetPort: 5173
+
+backend:
+  replicaCount: 1
+  image:
+    repository: krishankumargupta/exam-notes-backend
+    tag: latest
+    pullPolicy: Always
+  service:
+    type: ClusterIP
+    port: 8000
+    targetPort: 8000
