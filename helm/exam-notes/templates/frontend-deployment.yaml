@@ -1,3 +1,4 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -17,4 +18,19 @@ spec:
           image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
           imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
           ports:
-            - containerPort: 5173
+            - name: http
+              containerPort: 5173
+              protocol: TCP
+          env:
+            - name: VITE_FIREBASE_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: exam-notes-frontend-secret
+                  key: VITE_FIREBASE_APIKEY
+
+            - name: VITE_API_URL
+              valueFrom:
+                secretKeyRef:
+                  name: exam-notes-frontend-secret
+                  key: VITE_API_URL
+

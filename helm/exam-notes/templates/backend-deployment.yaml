@@ -1,3 +1,4 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -17,4 +18,44 @@ spec:
           image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
           imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
           ports:
-            - containerPort: 8000
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "8000"
+            - name: CLIENT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: exam-notes-backend-secret
+                  key: CLIENT_URL
+            - name: MONGODB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: exam-notes-backend-secret
+                  key: MONGODB_URL
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: exam-notes-backend-secret
+                  key: JWT_SECRET
+            - name: GEMINI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: exam-notes-backend-secret
+                  key: GEMINI_API_KEY
+            - name: STRIPE_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: exam-notes-backend-secret
+                  key: STRIPE_SECRET_KEY
+            - name: STRIPE_WEBHOOK_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: exam-notes-backend-secret
+                  key: STRIPE_WEBHOOK_SECRET
+            - name: GEMINI
+              valueFrom:
+                secretKeyRef:
+                  name: exam-notes-backend-secret
+                  key: GEMINI
