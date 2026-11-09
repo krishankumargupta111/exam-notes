@@ -1,4 +1,4 @@
-                                                       [🚀 Live Demo](https://exam-notesfrontend.onrender.com/)
+[🚀 Live Demo](https://exam-notesfrontend.onrender.com/)
 # 🚀 Exam Notes AI – AI-Powered Notes Generator
 
 An AI-powered notes generation platform that helps students create, manage, and download study notes effortlessly. Built using the MERN stack and Google's Gemini AI API, the application provides an intuitive way to generate educational content with a credit-based usage system.
